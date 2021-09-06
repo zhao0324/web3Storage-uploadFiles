@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title mode="ios">备份文件</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="part">
+      <input id="fileName" type="file" name="file" class="file" multiple="multiple" (change)="fileSelected($event)"/>
+      <img src="./assets/imgs/up_file.png" class="part_img">
+      <div class="part_tit">
+        <span class="part_p">备份文件</span>
+        <span class="part_con">选择您想备份的文件</span>
+      </div>
+    </ion-card>
+    <!-- <ion-card class="part">
+      <input id="file1" type="file" name="file1" class="file1" multiple="multiple" webkitdirectory (change)="fileSelected2($event)"/>
+      <img src="./assets/imgs/up_floder.png" class="part_img">
+      <div class="part_tit">
+        <span class="part_p">备份文件夹</span>
+        <span class="part_con">选择您想备份的文件夹</span>
+      </div>
+    </ion-card> -->
+    
+    <ion-card class="part" (click)="selUrl()">
+      <img src="./assets/imgs/up_url.png" class="part_img">
+      <div class="part_tit">
+        <p class="part_p">目标路径：<span style="font-weight: 500;">根目录{{furl}}</span></p>
+      </div>
+    </ion-card>
+    <ion-button (click)="uploadFiles();" class="submitBtn">提交</ion-button>
+    <div class="disable"></div>
+    <div class="line">
+      <p class="back_tit">备份进度</p>
+      <div class="back_file">
+        <ion-item lines="none" *ngFor="let file of upfile">
+          <img src="./assets/imgs/file.png" class="back_img" >
+          <ion-label class="filename">{{file.name}}</ion-label>
+          <ion-progress-bar value="{{bar_value}}" type="{{bar_type}}" class="plan"></ion-progress-bar>
+        </ion-item>
+        <!-- <ion-item lines="none" *ngFor="let floder of upfloder">
+          <img src="./assets/imgs/file.png" class="back_img">
+          <ion-label class="filename"> {{floder.name}}</ion-label>
+          <ion-progress-bar value="0.0" class="plan"></ion-progress-bar>
+        </ion-item> -->
+      </div>
+    </div>
+    
+</ion-content>
